@@ -1,0 +1,38 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:recipeApp
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+  h2:
+    console.enabled: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  application:
+    name: recipe-manager
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org.apache.kafka: warn
+    org.springframework.scheduling: fatal
+    org.springframework.kafka: fatal
+    ROOT: INFO
+    # org.hibernate.SQL: DEBUG
+    # org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+
+management:
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: health, prometheus
+  server:
+    port: 8090
