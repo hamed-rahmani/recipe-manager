@@ -13,11 +13,17 @@ these operations include:
 2. The number of servings
 3. Specific ingredients (either includes or excludes)
 4. Search within the instructions.
-   For example, the API should be able to handle the following search requests:
-   • All vegetarian recipes
-   • Recipes that can serve 4 persons and have “potatoes” as an ingredient
-   • Recipes without “salmon” as an ingredient that has “oven” in the instructions.
+
+For example, the API should be able to handle the following search requests:
+
+• All vegetarian recipes
+
+• Recipes that can serve 4 persons and have “potatoes” as an ingredient
+
+• Recipes without “salmon” as an ingredient that has “oven” in the instructions.
+
 ## Response Entty
+
 All responses will be in the bellow format.
 In successful request, result will be placed in `data` and `message="SUCCESS"`.
 
@@ -49,10 +55,12 @@ private String message = "SUCCESS";
 |management.server.port|8090|defines the management server port. health and metrics APIs will be available in this port|
 
 ## Database
+
 It uses a `H2 in-memory` database sqlite database, can be changed easily in the application.yml for any other database.
 There is a `data.sql` under resources in order to initial data.
 
 ## Requirements
+
 For building and running the application you need:
 
 `JDK 11`
@@ -60,7 +68,15 @@ For building and running the application you need:
 `Maven 3`
 
 ## Running the application locally
-There are several ways to run a Spring Boot application on your local machine. One way is to execute the main method from your IDE.
+You can clone This application by:
+
+
+`git clone git@github.com:hamed-rahmani/recipe-manager.git`
+
+`cd recipe-manager`
+
+There are several ways to run a Spring Boot application on your local machine. One way is to execute the main method
+from your IDE.
 
 Alternatively you can use the Spring Boot Maven plugin like so:
 
@@ -77,6 +93,7 @@ and explore h2-database:
 http://localhost:8081/h2-console/
 
 ## Try it out with Docker
+
 You'll need Docker installed.
 
 `mvn spring-boot:build-image`
@@ -95,15 +112,12 @@ API Endpoint: http://localhost:8080/api/v1/recipe/search
 
 `in "operation" we have:`
 
-
 1. [x] case "eq": return EQUAL;
 2. [x] case "ne": return NOT_EQUAL;
 3. [x] case "gt": return GREATER_THAN;
 4. [x] case "ge": return GREATER_THAN_EQUAL;
 
-
 `in "filterKey" we have:`
-
 
 FilterKey                          |  Value            | Operation |
 |-----------------------------------------|--------------------------|-----------|
@@ -113,8 +127,8 @@ FilterKey                          |  Value            | Operation |
 | serveNumber             | search by serveNumber                        | gt,ge     |
 | userId             | search by userId                       | eq,ne     |
 
-
 Payload Example for `instruction 'Stove' and ingredient not equal 'Potato' `:
+
 ```
 {
 "dataOption":"and",
