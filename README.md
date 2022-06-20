@@ -150,6 +150,8 @@ Payload Example for `instruction 'Stove' and ingredient not equal 'Potato' `:
 
 ## Improvement
 
-In future we can add RecepiDetailController in order to add,remove or update just a row in Recipe Details.
+- In future we can add RecipeDetailController in order to add,remove or update just a row in Recipe Details.
 (Currently we have to send total recipe and recipeDetails to update a Recipe)
+
+- Aslo we can add JWT security token for requests. then we can retrieve userId from the token.
 
