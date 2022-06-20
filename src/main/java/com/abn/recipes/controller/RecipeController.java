@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -52,7 +53,7 @@ public class RecipeController {
     }
 
     @PostMapping("/{userId}")
-    public ResponseEntity<ResponseEntityDto> addRecipe(@PathVariable Long userId, @RequestBody AddRecipeRequest addRecipeRequest) throws Exception {
+    public ResponseEntity<ResponseEntityDto> addRecipe(@PathVariable Long userId, @RequestBody @Valid AddRecipeRequest addRecipeRequest) throws Exception {
         recipeService.add(userId, addRecipeRequest);
         return ResponseEntity.ok(ResponseEntityDto.successWithoutBody());
 
@@ -60,13 +61,13 @@ public class RecipeController {
 
     @PutMapping("/{userId}/{recipeId}")
     @ResponseStatus(value = HttpStatus.OK)
-    public  ResponseEntity<ResponseEntityDto>  updateRecipe(@PathVariable Long userId, @PathVariable Long recipeId, @RequestBody UpdateRecipeRequest updateRecipeRequest) throws Exception {
+    public  ResponseEntity<ResponseEntityDto>  updateRecipe(@PathVariable Long userId, @PathVariable Long recipeId, @RequestBody @Valid UpdateRecipeRequest updateRecipeRequest) throws Exception {
         recipeService.update(userId, recipeId, updateRecipeRequest);
         return ResponseEntity.ok(ResponseEntityDto.successWithoutBody());
     }
 
     @PostMapping("/search")
-    public ResponseEntity<ResponseEntityDto> search(@RequestBody SearchDto searchDto) {
+    public ResponseEntity<ResponseEntityDto> search(@RequestBody @Valid SearchDto searchDto) {
 
         SpecificationBuilder builder = new SpecificationBuilder();
         List<SearchCriteria> criteriaList = searchDto.getSearchCriteriaList();
