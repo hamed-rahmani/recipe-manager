@@ -86,11 +86,11 @@ Alternatively you can use the Spring Boot Maven plugin like so:
 
 then you can open swagger-ui in your browser:
 
-http://localhost:8081/swagger-ui/
+http://localhost:8080/swagger-ui/
 
 and explore h2-database:
 
-http://localhost:8081/h2-console/
+http://localhost:8080/h2-console/
 
 ## Try it out with Docker
 
