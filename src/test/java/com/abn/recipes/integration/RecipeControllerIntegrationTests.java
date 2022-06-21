@@ -69,8 +69,11 @@ public class RecipeControllerIntegrationTests {
     @Test
     public void test_search() {
 
+        SearchDto searchDto = new SearchDto();
+        searchDto.setSearchCriteriaList(new ArrayList<>());
+
         ResponseEntity<ResponseEntityDto> response = restTemplate
-                .postForEntity(LOCALHOST_URL + port + BASE_URL + "search", new SearchDto(), ResponseEntityDto.class);
+                .postForEntity(LOCALHOST_URL + port + BASE_URL + "search", searchDto, ResponseEntityDto.class);
 
         assertEquals(false, ((ArrayList) response.getBody().getData()).isEmpty());
 

@@ -23,6 +23,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -107,6 +110,7 @@ public class RecipeControllerTest {
     @Test
     public void check_updateRecipe_endpoint_return_ok() throws Exception {
         UpdateRecipeRequest request = new UpdateRecipeRequest();
+        request.setRecipeDetails(new HashSet<>());
 
         mockMvc.perform(
                         put("/api/v1/recipe/2/3")
@@ -119,6 +123,7 @@ public class RecipeControllerTest {
     @Test
     public void check_search_endpoint_return_ok() throws Exception {
         SearchDto request = new SearchDto();
+        request.setSearchCriteriaList(new ArrayList<>());
 
         mockMvc.perform(
                         post("/api/v1/recipe/search")
